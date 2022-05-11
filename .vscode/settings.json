@@ -9,7 +9,8 @@
         "none",
         "passsword",
         "semibold",
-        "signup"
+        "signup",
+        "sqldata"
     ],
     "livePreview.defaultPreviewPath": "/index.html"
 }

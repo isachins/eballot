@@ -7,7 +7,7 @@ if (isset($_SESSION['email'])) {
     header("location: dashboard.php");
     exit;
 }
-require_once "config.php";
+require_once "include/config.php";
 
 $email = $password = "";
 $err = "";
@@ -59,6 +59,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <html lang="en">
 
 <head>
+
+<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set Up Election</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="./assets/js/init-alpine.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <script src="./assets/js/charts-lines.js" defer></script>
+    <script src="./assets/js/charts-pie.js" defer></script>
+    <!-- You need focus-trap.js to make the modal accessible -->
+    <script src="./assets/js/focus-trap.js" defer></script>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -124,12 +140,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </form>
                     <hr class="my-8" />
                     <p class="mt-4">
-                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href=".forgot-pass.php">
+                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="forgot-pass.php">
                             Forgot your password?
                         </a>
                     </p>
                     <p class="mt-1">
-                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href=".signup.php">
+                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="signup.php">
                             Create account
                         </a>
                     </p>

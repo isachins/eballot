@@ -64,7 +64,7 @@
                         <!-- signup -->
 
                         <div>
-                            <a href="signup.html"
+                            <a href="signup.php"
                                 class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                 signup
                             </a>
@@ -115,17 +115,16 @@
                                                 <rect fill="url(#dc223fcc-6d72-4ebc-b4ef-abe121034d6e)" width="52"
                                                     height="24"></rect>
                                             </svg>
-                                            <span class="relative">The</span>
+                                            <span class="relative">Voting</span>
                                         </span>
-                                        quick, brown fox jumps over a lazy dog
+                                        Software, and </br> Services that Generate Serious Impact
                                     </h2>
                                     <p class="text-base text-gray-700 md:text-lg">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque rem aperiam, eaque ipsa quae.
+                                        Upgrade from manually counting ballots to an online election system without sacrificing the integrity of your vote
                                     </p>
                                 </div>
                                 <div class="flex items-center sm:justify-center">
-                                    <a href="signup.html"
+                                    <a href="signup.php"
                                         class="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
                                         Get started
                                     </a>
@@ -178,119 +177,6 @@
                     <!--Header ends-->
 
 
-                    <!--Steps starts-->
-                    <!--
-
-                    <div
-                        class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-                        <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
-                            <div>
-                                <p
-                                    class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-                                    Brand new
-                                </p>
-                            </div>
-                            <h2
-                                class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-                                <span class="relative inline-block">
-                                    <svg viewBox="0 0 52 24" fill="currentColor"
-                                        class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-purple-gray-100 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
-                                        <defs>
-                                            <pattern id="f51618fb-0edb-4bcb-b35a-ffc770941286" x="0" y="0" width=".135"
-                                                height=".30">
-                                                <circle cx="1" cy="1" r=".7"></circle>
-                                            </pattern>
-                                        </defs>
-                                        <rect fill="url(#f51618fb-0edb-4bcb-b35a-ffc770941286)" width="52" height="24">
-                                        </rect>
-                                    </svg>
-                                    <span class="relative">The</span>
-                                </span>
-                                quick, brown fox jumps over a lazy dog
-                            </h2>
-                            <p class="text-base text-gray-700 md:text-lg">
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                rem aperiam, eaque ipsa
-                                quae.
-                            </p>
-                        </div>
-                        <div class="grid gap-8 row-gap-0 lg:grid-cols-3">
-                            <div class="relative text-center">
-                                <div
-                                    class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
-                                    <svg class="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
-                                        stroke="currentColor" viewBox="0 0 52 52">
-                                        <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                                            fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                                    </svg>
-                                </div>
-                                <h6 class="mb-2 text-2xl font-extrabold">Step 1</h6>
-                                <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-                                    Lookout flogging bilge rat main sheet bilge water nipper fluke to go on account
-                                    heave down clap
-                                </p>
-                                <a href="/" aria-label=""
-                                    class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn
-                                    more</a>
-                                <div class="top-0 right-0 flex items-center justify-center h-24 lg:-mr-8 lg:absolute">
-                                    <svg class="w-8 text-gray-700 transform rotate-90 lg:rotate-0" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        viewBox="0 0 24 24">
-                                        <line fill="none" stroke-miterlimit="10" x1="2" y1="12" x2="22" y2="12"></line>
-                                        <polyline fill="none" stroke-miterlimit="10" points="15,5 22,12 15,19 ">
-                                        </polyline>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="relative text-center">
-                                <div
-                                    class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
-                                    <svg class="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
-                                        stroke="currentColor" viewBox="0 0 52 52">
-                                        <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                                            fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                                    </svg>
-                                </div>
-                                <h6 class="mb-2 text-2xl font-extrabold">Step 2</h6>
-                                <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-                                    They urge you to put down your sword and come join the winners. In 22 years the only
-                                    'winners'
-                                </p>
-                                <a href="/" aria-label=""
-                                    class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn
-                                    more</a>
-                                <div class="top-0 right-0 flex items-center justify-center h-24 lg:-mr-8 lg:absolute">
-                                    <svg class="w-8 text-gray-700 transform rotate-90 lg:rotate-0" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                        viewBox="0 0 24 24">
-                                        <line fill="none" stroke-miterlimit="10" x1="2" y1="12" x2="22" y2="12"></line>
-                                        <polyline fill="none" stroke-miterlimit="10" points="15,5 22,12 15,19 ">
-                                        </polyline>
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="relative text-center">
-                                <div
-                                    class="flex items-center justify-center w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-50 sm:w-20 sm:h-20">
-                                    <svg class="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
-                                        stroke="currentColor" viewBox="0 0 52 52">
-                                        <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-                                            fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
-                                    </svg>
-                                </div>
-                                <h6 class="mb-2 text-2xl font-extrabold">Step 3</h6>
-                                <p class="max-w-md mb-3 text-sm text-gray-900 sm:mx-auto">
-                                    Tell them I hate them. Is the Space Pope reptilian!? Tell her she looks thin. Hello,
-                                    little man
-                                </p>
-                                <a href="/" aria-label=""
-                                    class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn
-                                    more</a>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-                    <!--Steps ends-->
 
 
                     <!--Features starts-->
@@ -537,7 +423,7 @@
                                 <div
                                     class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
                                     <img class="object-cover w-full rounded-xl aspect-square"
-                                        src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                        src="   "
                                         alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
@@ -584,7 +470,7 @@
                                 <div
                                     class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
                                     <img class="object-cover w-full rounded-xl aspect-square"
-                                        src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
+                                        src=""
                                         alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
@@ -631,7 +517,7 @@
                                 <div
                                     class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
                                     <img class="object-cover w-full rounded-xl aspect-square"
-                                        src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+                                        src=""
                                         alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">

@@ -1,9 +1,15 @@
 {
     "cSpell.words": [
         "-webkit-print-color-adjust",
+        "eballot",
         "enter",
+        "loggedin",
+        "logut",
         "multiselect",
-        "none"
+        "none",
+        "passsword",
+        "semibold",
+        "signup"
     ],
     "livePreview.defaultPreviewPath": "/index.html"
 }

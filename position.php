@@ -434,7 +434,7 @@
 
 
                             <div>
-                                <a href="voting-panel.html"
+                                <a href="voting-panel.php"
                                     class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
                                     <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true"
@@ -446,7 +446,7 @@
                             </div>
 
                             <div>
-                                <a href="candidates.html"
+                                <a href="candidates.php"
                                     class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
                                     <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true"

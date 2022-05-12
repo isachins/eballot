@@ -1,4 +1,8 @@
 <?php
+
+header("Location: login.php");
+exit();
+
 if (isset($_POST['submit'])) {
     if (isset($_POST['name']) && isset($_POST['gender']) &&
         isset($_POST['status']) && isset($_POST['email']) &&
@@ -39,6 +43,8 @@ if (isset($_POST['submit'])) {
                 $stmt->bind_param("sssss",$name, $gender, $status, $email, $password);
                 if ($stmt->execute()) {
                     echo "New record inserted successfully.";
+                    header("Location:dashboard.php");
+
                 }
                 else {
                     echo $stmt->error;

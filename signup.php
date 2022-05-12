@@ -1,78 +1,4 @@
-<?php
-require_once "include/config.php";
-$email = $password = $confirm_password = "";
-$email_err = $password_err = $confirm_password_err = "";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-
-    // Check if email is empty
-    if (empty(trim($_POST["email"]))) {
-        $email_err = "email cannot be blank";
-    } else {
-        $sql = "SELECT email FROM users WHERE email = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "s", $param_email);
-
-            // Set the value of param username
-            $param_email = trim($_POST['email']);
-
-            // Try to execute this statement
-            if (mysqli_stmt_execute($stmt)) {
-                mysqli_stmt_store_result($stmt);
-                if (mysqli_stmt_num_rows($stmt) == 1) {
-                    $email_err = "This email is already taken";
-                } else {
-                    $email = trim($_POST['email']);
-                }
-            } else {
-                echo "Something went wrong";
-            }
-            mysqli_stmt_close($stmt);
-        }
-    }
-
-
-
-    // Check for password
-    if (empty(trim($_POST['password']))) {
-        $password_err = "Password cannot be blank";
-    } elseif (strlen(trim($_POST['password'])) < 6) {
-        $password_err = "Password cannot be less than 6 characters";
-    } else {
-        $password = trim($_POST['password']);
-    }
-
-    // Check for confirm password field
-    if (trim($_POST['password']) !=  trim($_POST['confirm_password'])) {
-        $password_err = "Passwords should match";
-    }
-
-
-    // If there were no errors, go ahead and insert into the database
-    if (empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
-        $sql = "INSERT INTO users (email, password) VALUES (?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-        if ($stmt) {
-            mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password);
-
-            // Set these parameters
-            $param_email = $email;
-            $param_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Try to execute the query
-            if (mysqli_stmt_execute($stmt)) {
-                header("location: login.php");
-            } else {
-                echo "Something went wrong... cannot redirect!";
-            }
-        }
-        mysqli_stmt_close($stmt);
-    }
-    mysqli_close($conn);
-}
-
-?>
 
 <!doctype html>
 <html lang="en">
@@ -146,24 +72,24 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     </h1>
                     <form action="insert.php" method="POST">
                         <label class="block text-sm">
+                        <input placeholder="Jane Doe" type="text" name="name" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
                             <span class="text-gray-700 dark:text-gray-400">Name</span>
-                            <input placeholder="Jane Doe" type="text" name="name" type="text" id="name" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
                         </label>
                         <div class="mt-4 text-sm" required>
                             <span class="text-gray-700 dark:text-gray-400">
-                                Gender Male
+                                Gender
                             </span>
                             <div class="mt-2">
                                 <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
-                                    <input  name="gender" type="radio" id="male" value="male" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+                                    <input  name="gender" type="radio" id="male" value="m" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
                                     <span class="ml-2">Male</span>
                                 </label>
                                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                                    <input  name="gender" type="radio" id="female" value="female" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+                                    <input  name="gender" type="radio" id="female" value="f" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
                                     <span class="ml-2">Female</span>
                                 </label>
                                 <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
-                                    <input  name="gender"  type="radio" id="others" value="others" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
+                                    <input  name="gender"  type="radio" id="others" value="o" required class="text-purple-600 form-radio focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray" />
                                     <span class="ml-2">Others</span>
                                 </label>
                             </div>
@@ -174,24 +100,30 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             </span>
                             <select placeholder="select" type="text"id="status" name="status" required class="block w-full mt-1 text-sm dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 form-select focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray">
                                 <option>-select-</option>
-                                <option>Employed</option>
-                                <option>Unemployed</option>
-                                <option>self-employed</option>
+                                <option value="Employed">>Employed</option>
+                                <option value="Unemployed">>Unemployed</option>
+                                <option value="self-employed">>self-employed</option>
                             </select>
                         </label>
                         <label class="block mt-4 text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Email</span>
-                            <input placeholder="example@email.com" type="email" name="email" id="email" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                        <span class="text-gray-700 dark:text-gray-400">Email</span>
+
+                        <input placeholder="example@email.com" type="email" name="email" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+
                         </label>
                         <label class="block mt-4 text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Password</span>
-                            <input placeholder="password" type="password" name="password" id="password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                        <span class="text-gray-700 dark:text-gray-400">Password</span>
+
+                        <input placeholder="password" type="password" name="password" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+
                         </label>
                         <label class="block mt-4 text-sm">
+                            
                             <span class="text-gray-700 dark:text-gray-400">
                                 Confirm password
                             </span>
-                            <input placeholder="confirm password" type="password" name="confirm_password" id="confirm_password" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+                            <input placeholder="confirm_password" type="password" name="confirm_password" required class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input" />
+
                         </label>
 
                         <div class="flex mt-6 text-sm">
@@ -205,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         </div>
 
                         <!-- You should use a button here, as the anchor is only used for the example  -->
-                        <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                        <button type="submit" value="Submit" name="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                             Create account
                         </button>
 

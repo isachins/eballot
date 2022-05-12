@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+$election_name = isset($_POST['election_name']) ? $_POST['election_name'] : "";
+
+$election_name = $_GET['election_name'];
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("location: login.php");
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
@@ -233,7 +248,8 @@
                 <div class="container px-6 mx-auto grid">
 
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                       Voters
+                    echo "election_name: ".$election_name;
+
                     </h2>
                     <div class="flex items-center py-2 overflow-y-auto whitespace-nowrap">
 

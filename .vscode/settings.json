@@ -8,9 +8,12 @@
         "multiselect",
         "none",
         "passsword",
+        "rnum",
         "semibold",
+        "servername",
         "signup",
-        "sqldata"
+        "sqldata",
+        "sqlquery"
     ],
     "livePreview.defaultPreviewPath": "/index.html"
 }

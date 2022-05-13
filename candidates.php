@@ -16,6 +16,8 @@
     <script src="./assets/js/charts-pie.js" defer></script>
     <!-- You need focus-trap.js to make the modal accessible -->
     <script src="./assets/js/focus-trap.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
 
 </head>
 

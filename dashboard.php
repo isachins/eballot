@@ -26,6 +26,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <script src="./assets/js/charts-pie.js" defer></script>
     <!-- You need focus-trap.js to make the modal accessible -->
     <script src="./assets/js/focus-trap.js" defer></script>
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
 
 </head>
 
@@ -91,7 +93,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </header>
 
 
-                        <form method="post" action="voting-panel.php">
+                        <form method="post" action="election_name_db.php">
 
                             <!-- Modal body -->
                             <div class="mt-4 mb-6">
@@ -102,14 +104,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <!-- Modal description -->
                                 <div class="mt-4">
                                     <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Enter your election name</label>
-                                    <input type="text" required name="election_name" id="election_name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300">
+                                    <input type="text" required name="election_name" id="election_name" placeholder="name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300">
                                 </div>
                             </div>
                             <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
-                                <button @click="closeModal" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
-                                    Cancel
-                                </button>
-                                <button type="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                <button type="submit" name="save" value="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                     Accept
                                 </button>
                             </footer>
@@ -174,7 +173,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             </button>
                         </header>
                         <!-- Modal body -->
-                        <form method="post" action="voting-panel.php">
+                        <form method="post" action="election_name_db.php">
 
                             <div class="mt-4 mb-6">
                                 <!-- Modal title -->
@@ -381,7 +380,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <div class="grid gap-6 mb-8 md:grid-cols-2">
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                                Revenue
+                                Result
                             </h4>
                             <canvas id="pie"></canvas>
                             <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
@@ -402,7 +401,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </div>
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                                Traffic
+                                Time 
                             </h4>
                             <canvas id="line"></canvas>
                             <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">

@@ -1,3 +1,9 @@
+<?php
+
+require_once "include/config.php";
+error_reporting(0);
+
+?>
 
 
 
@@ -19,10 +25,18 @@
     <script src="./assets/js/charts-pie.js" defer></script>
     <!-- You need focus-trap.js to make the modal accessible -->
     <script src="./assets/js/focus-trap.js" defer></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+
+
+
 
 </head>
 
 <body>
+
+
     <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
         <aside class="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0">
@@ -43,12 +57,6 @@
                             <span class="ml-4">Dashboard</span>
                         </a>
                     </li>
-
-
-
-
-
-
                 </ul>
 
                 <ul>
@@ -225,7 +233,7 @@
                                 <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
 
                                     <li class="flex">
-                                        <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"  href="logout.php">
+                                        <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="logout.php">
                                             <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
                                                 </path>
@@ -245,7 +253,7 @@
                 <div class="container px-6 mx-auto grid">
 
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-                  Position
+                        Position
                     </h2>
                     <div class="flex items-center py-2 overflow-y-auto whitespace-nowrap">
 
@@ -286,6 +294,7 @@
                             </div>
 
 
+
                             <!-- Modal backdrop. This what you want to place close to the closing body tag -->
                             <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
                                 <!-- Modal -->
@@ -299,52 +308,46 @@
                                         </button>
                                     </header>
                                     <!-- Modal body -->
-                                    <div class="mt-4 mb-6">
-                                        <!-- Modal title -->
-                                        <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
-                                            Position
-                                        </p>
-                                        <!-- Modal description -->
+                                    <form method="post" action="position_add_db.php">
+
+                                        <div class="mt-4 mb-6">
+                                            <!-- Modal title -->
+                                            <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
+                                                Position
+                                            </p>
+                                            <!-- Modal description -->
 
 
-                                        <div class="mt-4">
-                                            <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Enter Position Name</label>
+                                            <div class="mt-4">
+                                                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">name</label>
+                                                <input id="LoggingEmailAddress"type="text" name="name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" >
+                                            </div>
 
-                                            <div class="w-full mt-4">
-                                                <input class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300" type="text" placeholder="Name" aria-label="Email Address" />
-
-                                                <input class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring focus:ring-blue-300" type="text" placeholder="Description" aria-label="Email Address" />
+                                            <div class="mt-4">
+                                                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">description</label>
+                                                <textarea name="desc" placeholder="Message" type="text" rows="3" id="exampleFormControlTextarea13" 
+                                                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none ">
+                                                </textarea>
                                             </div>
                                         </div>
+                                        <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
+                                            <button type="submit" name="save" value="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                                Accept
+                                            </button>
+                                        </footer>
+                                    </form>
 
 
-                                    </div>
-                                    <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
-                                        <button @click="closeModal" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
-                                            Cancel
-                                        </button>
-                                        <button class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                                            Add
-                                        </button>
-                                    </footer>
+
                                 </div>
                             </div>
                             <!-- End of modal backdrop -->
 
 
 
-                            <div class="relative w-full max-w-xl mr-6 focus-within:text-purple-500">
-                                <div class="absolute inset-y-0 flex items-center pl-2">
-                                    <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                <input class="w-full pl-8 pr-2 text-sm text-gray-700 placeholder-gray-600 bg-gray-100 border-0 rounded-md dark:placeholder-gray-500 dark:focus:shadow-outline-gray dark:focus:placeholder-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:placeholder-gray-500 focus:bg-white focus:border-purple-300 focus:outline-none focus:shadow-outline-purple form-input" type="text" placeholder="Search for Position    " aria-label="Search" />
-                            </div>
-
 
                             <div>
-                                <a href="voting-panel.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                <a href="voters.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
                                     <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
 
@@ -370,7 +373,7 @@
 
                         <!-- With avatar -->
                         <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                            Voters List
+                            Position List
                         </h4>
                         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
                             <div class="w-full overflow-x-auto">
@@ -411,44 +414,6 @@
                                                 </div>
                                             </td>
                                         </tr>
-
-                                        <tr class="text-gray-700 dark:text-gray-400">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center text-sm">
-                                                    <div>
-                                                        <p class="font-semibold">Hans Burger</p>
-
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                about this position
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center space-x-4 text-sm">
-                                                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-                                                            </path>
-                                                        </svg>
-                                                    </button>
-                                                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-
-
-
-
-
-
-
-
                                     </tbody>
                                 </table>
                             </div>

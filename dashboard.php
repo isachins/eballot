@@ -312,9 +312,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </svg>
                             </div>
                             <div>
-                                <a href="position.php" p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <button  p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     No. of Positions
-                                    </p></a>
+                                    </p>
+                                </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     6389
                                 </p>
@@ -328,9 +329,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </svg>
                             </div>
                             <div>
-                                <a href="candidates.php" p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     No. of Candidates
-                                    </p></a>
+                                    </p>
+                                </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     $ 46,760.89
                                 </p>
@@ -345,13 +347,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </svg>
                             </div>
                             <div>
-                                <a href="voters.php" p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Total Voters
                                     </p>
+                                    </button>
                                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                         376
                                     </p>
-                                </a>
+                                
                             </div>
                         </div>
                         <!-- Card -->
@@ -362,9 +365,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </svg>
                             </div>
                             <div>
-                                <a href="votes.php" p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Voters Voted
-                                    </p></a>
+                                    </p>
+                                </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     35
                                 </p>

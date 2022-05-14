@@ -1,17 +1,29 @@
-<!-- php to add position name to database -->
 <?php
+require_once "include/session.php";
 
-$name = $_GET['name'];
-$description = $_GET['description'];
+	if(isset($_POST['submit'])){
+        $name = $_POST['name'];
+		$description = $_POST['description'];
+		
 
-$query="INSERT INTO position VALUES ('$name', '$description')";
-$data= mysqli_query($conn, $query);
+		$sql = "SELECT * FROM position ORDER BY priority DESC LIMIT 1";
+		$query = $conn->query($sql);
+		$row = $query->fetch_assoc();
 
+		$priority = $row['priority'] + 1;
+		
+		$sql = "INSERT INTO position (name, description, priority) VALUES ('$name', '$description', '$priority')";
+		if($conn->query($sql)){
+			$_SESSION['success'] = 'Position added successfully';
+		}
+		else{
+			$_SESSION['error'] = $conn->error;
+		}
 
-if($data){
-    echo "data inserted into database";
-}
-else{
-    echo "failed";
-}
+	}
+	else{
+		$_SESSION['error'] = 'Fill up add form first';
+	}
+
+	header('location: position.php');
 ?>

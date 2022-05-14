@@ -1,20 +1,25 @@
 <?php
-	include 'includes/config.php';
 
-	if(isset($_POST['delete'])){
-		$id = $_POST['id'];
-		$sql = "DELETE FROM positions WHERE id = '$id'";
-		if($conn->query($sql)){
-			$_SESSION['success'] = 'Position deleted successfully';
-		}
-		else{
-			$_SESSION['error'] = $conn->error;
-		}
-	}
-	else{
-		$_SESSION['error'] = 'Select item to delete first';
-	}
 
-	header('location: position.php');
-	
+session_start();
+require_once "include/config.php";
+
+
+error_reporting(0);
+
+
+$id=$_GET['id'];
+$query = "DELETE FROM position WHERE id = '$id'";
+
+$data=mysqli_query($conn, $query);
+
+if($data)
+{
+    echo "Record deleted from database";
+}
+else{
+    echo " Failed to delete data";
+}
+header('location: position.php');
+
 ?>

@@ -3,17 +3,24 @@
         "-webkit-print-color-adjust",
         "eballot",
         "enter",
+        "firstname",
         "loggedin",
         "logut",
         "multiselect",
         "none",
         "passsword",
+        "positionadd",
+        "positiondelete",
+        "positioneadd",
+        "positionedit",
+        "previewarea",
         "rnum",
         "semibold",
         "servername",
         "signup",
         "sqldata",
-        "sqlquery"
+        "sqlquery",
+        "votersdelete"
     ],
     "livePreview.defaultPreviewPath": "/index.html"
 }

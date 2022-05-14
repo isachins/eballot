@@ -1,7 +1,12 @@
 <?php
 
 require_once "include/config.php";
+
 error_reporting(0);
+$name = $_GET['name'];
+$description = $_GET['description'];
+
+
 
 ?>
 
@@ -28,7 +33,12 @@ error_reporting(0);
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/assets/css/index.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
 
 
 
@@ -276,104 +286,89 @@ error_reporting(0);
 
 
 
-
-
-                    <div class="container mt-4 px-6 mx-auto grid">
-
-
-                        <div class="flex flex-col flex-wrap mb-8 space-y-4 md:flex-row md:items-end md:space-x-4">
-                            <div>
-                                <button @click="openModal" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                                    <span>+</span>
-
-                                    <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
-
-                                    </svg>
-                                    <span>Add Position </span>
-                                </button>
-                            </div>
+                    </br>
 
 
 
-                            <!-- Modal backdrop. This what you want to place close to the closing body tag -->
-                            <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
-                                <!-- Modal -->
-                                <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl" role="dialog" id="modal">
-                                    <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
-                                    <header class="flex justify-end">
-                                        <button class="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700" aria-label="close" @click="closeModal">
-                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" role="img" aria-hidden="true">
-                                                <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </header>
-                                    <!-- Modal body -->
-                                    <form method="post" action="position_add_db.php">
+                    <div class="flex flex-col flex-wrap mb-8 space-y-4 md:flex-row md:items-end md:space-x-4">
+                        <div>
+                            <button type='button' data-modal-toggle='positioneadd' class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                <span>+</span>
 
-                                        <div class="mt-4 mb-6">
-                                            <!-- Modal title -->
-                                            <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
-                                                Position
-                                            </p>
-                                            <!-- Modal description -->
+                                <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
 
-
-                                            <div class="mt-4">
-                                                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">name</label>
-                                                <input id="LoggingEmailAddress"type="text" name="name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" >
-                                            </div>
-
-                                            <div class="mt-4">
-                                                <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">description</label>
-                                                <textarea name="desc" placeholder="Message" type="text" rows="3" id="exampleFormControlTextarea13" 
-                                                    class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none ">
-                                                </textarea>
-                                            </div>
-                                        </div>
-                                        <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
-                                            <button type="submit" name="save" value="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                                                Accept
-                                            </button>
-                                        </footer>
-                                    </form>
-
-
-
-                                </div>
-                            </div>
-                            <!-- End of modal backdrop -->
-
-
-
-
-                            <div>
-                                <a href="voters.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-
-                                    <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
-
-                                    </svg>
-                                    <span>&LeftArrow; Previous </span>
-                                </a>
-                            </div>
-
-                            <div>
-                                <a href="candidates.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-
-                                    <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
-
-                                    </svg>
-                                    <span>Next &RightArrow;</span>
-                                </a>
-                            </div>
-
+                                </svg>
+                                <span>Add Position </span>
+                            </button>
                         </div>
 
 
 
 
-                        <!-- With avatar -->
+                        <div id='positioneadd' tabindex='-1' aria-hidden='true' class='hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center'>
+                            <div class='relative p-4 w-full max-w-2xl h-full md:h-auto'>
+                                <div class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+                                    <div class='flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600'>
+                                        <h3 class='text-xl font-semibold text-gray-900 dark:text-white'>
+                                            Add Position
+                                        </h3>
+                                        <button type='button' class='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white' data-modal-toggle='positioneadd'>
+                                            <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+                                                <path fill-rule='evenodd' d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z' clip-rule='evenodd'></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <form method="post" action="position_add.php">
+                                        <div class='p-6 space-y-6'>
+                                            <div class='mt-4'>
+                                                <label for='first_name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>First name</label>
+                                                <input type="text" name="name" placeholder="Name" required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='John' required>
+                                            </div>
+                                            <div class='mt-4'>
+                                                <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
+                                                <textarea placeholder="Your message..." id="description" name="description" rows="4" required class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='Your message...'></textarea>
+                                            </div>
+
+                                            <div class='flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600'>
+                                                <button data-modal-toggle='positioneadd' type="submit" name="submit" class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+                                                    Add</button>
+                                                <button data-modal-toggle='positioneadd' type='button' class='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'>
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="voters.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+
+                                <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+
+                                </svg>
+                                <span>&LeftArrow; Previous </span>
+                            </a>
+                        </div>
+
+                        <div>
+                            <a href="candidates.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+
+                                <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
+
+                                </svg>
+                                <span>Next &RightArrow;</span>
+                            </a>
+                        </div>
+
+
+                        </br>
+
+                        <!--table-->
                         <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                            Position List
+                            Positions
                         </h4>
                         <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
                             <div class="w-full overflow-x-auto">
@@ -386,34 +381,162 @@ error_reporting(0);
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                        <tr class="text-gray-700 dark:text-gray-400">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center text-sm">
-                                                    <div>
-                                                        <p class="font-semibold">Hans Burger</p>
 
+                                        <?php
+
+                                        $servername = "localhost";
+                                        $username = "root";
+                                        $password = "";
+                                        $database = "eballot";
+
+                                        //check connection
+                                        $connection = new mysqli($servername, $username, $password, $database);
+
+                                        // check connection
+                                        if ($connection->connect_error) {
+                                            die("Connection Failed:" . $connection->connect_error);
+                                        }
+
+                                        //read all row from database table
+                                        $sql = "SELECT * FROM position";
+                                        $result = $connection->query($sql);
+
+                                        if (!$result) {
+                                            die("Invalid query: " . $connection->error);
+                                        }
+
+                                        //read data of each row
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo " 
+                                                <tr class='text-gray-700 dark:text-gray-400'>
+                                                    <td class='px-4 py-3'>
+                                                        <div class='flex items-center text-sm'>
+                                                            <div >
+                                                                <p class='font-semibold'>  " . $row["name"] . " </p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class='px-4 py-3 text-sm'>
+                                                            " . $row["description"] . "
+                                                    </td>
+                                                    <td class='px-4 py-3'>
+                                                        <div class='flex items-center space-x-4 text-sm'>
+
+
+
+                                                            <button  type='button' data-modal-toggle='positionedit'
+                                                                class='flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray' aria-label='Edit'>
+                                                                <svg class='w-5 h-5' aria-hidden='true' fill='currentColor' viewBox='0 0 20 20'>
+                                                                    <path d='M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z'>
+                                                                    </path>
+                                                                </svg>
+                                                            </button>
+
+
+                                                            <div id='positionedit' tabindex='-1' aria-hidden='true'
+                                                            class='hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center'>
+                                                            <div class='relative p-4 w-full max-w-2xl h-full md:h-auto'>
+                                                                <div class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+                                                                    <div class='flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600'>
+                                                                        <h3 class='text-xl font-semibold text-gray-900 dark:text-white'>
+                                                                             Edit Position
+                                                                        </h3>
+                                                                        <button type='button'
+                                                                            class='text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white'
+                                                                            data-modal-toggle='positionedit'>
+                                                                            <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+                                                                                <path fill-rule='evenodd'
+                                                                                    d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                                                                                    clip-rule='evenodd'></path>
+                                                                           </svg>
+                                                                        </button>
+                                                                    </div>
+
+                                                                    <form method='post' action='position_edit.php'>
+                                                                        <div class='p-6 space-y-6'>
+                                                                            <div class='mt-4'>
+                                                                                <label for='first_name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>  Name </label>
+                                                                                <input type='text' name='u_name' placeholder='Name' value=' $row[name]' class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='John' required>
+                                                                            </div>
+                                                                            <div class='mt-4'>
+                                                                                <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
+                                                                                <textarea id='description' name='u_description' rows='4' placeholder='message' value='$row[description]' class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                                                                                </textarea>
+                                                                            </div>
+
+                                                                            <div class='flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600'>
+                                                                                <a href='position_edit.php?id=$row[id]' type='submit' name='submit' data-modal-toggle='positioneadd' class='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+                                                                                    Save
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        
+
+
+
+
+
+
+
+
+                                                            <button type='button' data-modal-toggle='positiondelete' aria-label='Delete' class='flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray' >
+                                                                <svg class='w-5 h-5' aria-hidden='true' fill='currentColor' viewBox='0 0 20 20'>
+                                                                    <path clip-rule='evenodd' fill-rule='evenodd' d='M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z' ></path>
+                                                                </svg>
+                                                            </button>
+
+
+
+
+
+                                                    <div id='positiondelete' tabindex='-1'
+                                                        class='hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center'
+                                                        aria-hidden='true'>
+                                                        <div class='relative p-4 w-full max-w-md h-full md:h-auto'>
+                                                            <div class='relative bg-white rounded-lg shadow dark:bg-gray-700'>
+                                                                <button type='button'
+                                                                    class='absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white'
+                                                                    data-modal-toggle='positiondelete'>
+                                                                    <svg class='w-5 h-5' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+                                                                        <path fill-rule='evenodd'
+                                                                            d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                                                                            clip-rule='evenodd'></path>
+                                                                    </svg>
+                                                                </button>
+                                                                <div class='p-6 text-center'>
+                                                                    <svg class='mx-auto mb-4 w-14 h-14 text-gray-400 dark:text-gray-200' fill='none' stroke='currentColor'
+                                                                        viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
+                                                                        <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2'
+                                                                            d='M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z'></path>
+                                                                    </svg>
+                                                                    <h3 class='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>Are you sure you want to delete
+                                                                        this entry?</h3>
+                                                                    <a  href='position_delete.php?id=$row[id]' data-modal-toggle='positiondelete' type='button'
+                                                                        class='text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2'>
+                                                                        Yes, I'm sure
+                                                                    </a>
+                                                                    <button data-modal-toggle='positiondelete' type='button'
+                                                                        class='text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600'>No,
+                                                                        cancel
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-sm">
-                                                about this position
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center space-x-4 text-sm">
-                                                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Edit">
-                                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
-                                                            </path>
-                                                        </svg>
-                                                    </button>
-                                                    <button class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray" aria-label="Delete">
-                                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                        </div>
+                                                    </td>                                                     
+                                                </tr>
+                                            ";
+                                        }
+                                        ?>
+
+
+
                                     </tbody>
                                 </table>
                             </div>
@@ -440,5 +563,8 @@ error_reporting(0);
         </div>
     </div>
 </body>
+<script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
+
+</html>
 
 </html>

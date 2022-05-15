@@ -312,7 +312,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </svg>
                             </div>
                             <div>
-                                <button  p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     No. of Positions
                                     </p>
                                 </button>
@@ -350,11 +350,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Total Voters
                                     </p>
-                                    </button>
-                                    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                        376
-                                    </p>
-                                
+                                </button>
+                                <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                    376
+                                </p>
+
                             </div>
                         </div>
                         <!-- Card -->
@@ -405,7 +405,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         </div>
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                                Time 
+                                Time
                             </h4>
                             <canvas id="line"></canvas>
                             <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">

@@ -42,10 +42,7 @@ html,body{
   cursor: default;
   transition: all 0.3s ease;
 }
-#option-1:checked ~ .option-1,
-#option-2:checked ~ .option-2,
-#option-3:checked ~ .option-3,
-#option-4:checked ~ .option-4{
+#option-1:checked ~ .option-1{
   background: #333;
   border-color: #333;
 }
@@ -57,10 +54,7 @@ html,body{
   position: relative;
   transition: all 0.3s ease;
 }
-#option-1:checked ~ .option-1 .dot,
-#option-2:checked ~ .option-2 .dot,
-#option-3:checked ~ .option-3 .dot,
-#option-4:checked ~ .option-4 .dot{
+#option-1:checked ~ .option-1 .dot{
   background: #fff;
 }
 .box label .dot::before{
@@ -74,10 +68,7 @@ html,body{
   border-radius: 50%;
   transition: all 0.3s ease;
 }
-#option-1:checked ~ .option-1 .dot::before,
-#option-2:checked ~ .option-2 .dot::before,
-#option-3:checked ~ .option-3 .dot::before,
-#option-4:checked ~ .option-4 .dot::before{
+#option-1:checked ~ .option-1 .dot::before{
   background: #333;
   transform: translate(-50%, -50%) scale(1);
 }
@@ -88,10 +79,7 @@ html,body{
   padding-left: 10px;
   transition: color 0.3s ease;
 }
-#option-1:checked ~ .option-1 .text,
-#option-2:checked ~ .option-2 .text,
-#option-3:checked ~ .option-3 .text,
-#option-4:checked ~ .option-4 .text{
+#option-1:checked ~ .option-1 .text{
   color: #fff;
 }
 .wrapper .box input[type="radio"]{

@@ -134,7 +134,7 @@ if(empty($err))
             <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                 <div class="w-full">
                     <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
-                        Login as Admin
+                        Login as Voter
                     </h1>
                     <form action="" method="POST">
                         <label class="block text-sm">

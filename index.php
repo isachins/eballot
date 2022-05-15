@@ -17,6 +17,7 @@
     <!-- You need focus-trap.js to make the modal accessible -->
     <script src="./assets/js/focus-trap.js" defer></script>
 
+
 </head>
 
 <body>
@@ -59,14 +60,48 @@
                         <!-- signup -->
 
                         <div>
-                            <a href="signup.php" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
-                                signup
-                            </a>
+                            <button type="button" @click="openModal" class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                Login
+                            </button>
                         </div>
+
+                        <!-- Modal backdrop. This what you want to place close to the closing body tag -->
+                        <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-30 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center">
+                            <!-- Modal -->
+                            <div x-show="isModalOpen" x-transition:enter="transition ease-out duration-150" x-transition:enter-start="opacity-0 transform translate-y-1/2" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0  transform translate-y-1/2" @click.away="closeModal" @keydown.escape="closeModal" class="w-full px-6 py-4 overflow-hidden bg-white rounded-t-lg dark:bg-gray-800 sm:rounded-lg sm:m-4 sm:max-w-xl" role="dialog" id="modal">
+                                <!-- Remove header if you don't want a close icon. Use modal body to place modal tile. -->
+                                <header class="flex justify-end">
+                                    <button class="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700" aria-label="close" @click="closeModal">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" role="img" aria-hidden="true">
+                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </header>
+                                <!-- Modal body -->
+                                <div class="mt-4 mb-6">
+                                    <!-- Modal title -->
+                                    <p class="mb-6 text-lg text-center  font-semibold text-gray-700 dark:text-gray-300">
+                                        How do you want to login...
+                                    </p>
+
+                                </div>
+                                <footer class="flex flex-col justify-center items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
+                                    <a href="login.php" class="w-full px-5 py-3 items-center text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                        Admin
+                                    </a>
+                                    <a href="userlogin.php" class="w-full px-5 py-3 text-sm justify-center items-center font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                        Voter
+                                    </a>
+                                </footer>
+                            </div>
+                        </div>
+                        <!-- End of modal backdrop -->
 
 
 
                     </ul>
+
+
                 </div>
             </header>
 
@@ -84,16 +119,16 @@
 
 
                     <!--Header start-->
-                    <div class="mb-16">
-                        <div class="bg-gray-100">
-                            <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+                    <div class="bg-white dark:bg-gray-900 dark:text-white mb-16">
+                        <div class="bg-white dark:bg-gray-900 dark:text-white bg-gray-100">
+                            <div class="bg-white dark:bg-gray-900 dark:text-white px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
                                 <div class="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
                                     <div>
-                                        <p class="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+                                        <p class="bg-white dark:bg-gray-900 dark:text-white inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
                                             eBallot
                                         </p>
                                     </div>
-                                    <h2 class="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
+                                    <h2 class="bg-white dark:bg-gray-900 dark:text-white max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
                                         <span class="relative inline-block">
                                             <svg viewBox="0 0 52 24" fill="currentColor" class="absolute top-0 left-0 z-0 hidden w-32 -mt-8 -ml-20 text-gray-400 lg:w-32 lg:-ml-28 lg:-mt-10 sm:block">
                                                 <defs>
@@ -107,29 +142,29 @@
                                         </span>
                                         Software, and </br> Services that Generate Serious Impact
                                     </h2>
-                                    <p class="text-base text-gray-700 md:text-lg">
+                                    <p class="bg-white dark:bg-gray-900 dark:text-white text-base text-gray-700 md:text-lg">
                                         Upgrade from manually counting ballots to an online election system without sacrificing the integrity of your vote
                                     </p>
                                 </div>
                                 <div class="flex items-center sm:justify-center">
                                     <a href="signup.php" class="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
-                                        Get started
+                                        Signup
                                     </a>
-                                    <a href="/" aria-label="" class="inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-purple-700">Learn
+                                    <a href="/" aria-label="" class="bg-white dark:bg-gray-900 dark:text-white inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-purple-700">Learn
                                         more...</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="relative px-4 sm:px-0">
-                            <div class="absolute inset-0 bg-gray-100 h-1/2"></div>
-                            <div class="relative grid mx-auto overflow-hidden bg-white divide-y rounded shadow sm:divide-y-0 sm:divide-x sm:max-w-screen-sm sm:grid-cols-3 lg:max-w-screen-md">
+                        <div class="bg-white dark:bg-gray-900 dark:text-white relative px-4 sm:px-0">
+                            <div class="bg-white dark:bg-gray-900 dark:text-white absolute inset-0 bg-gray-100 h-1/2"></div>
+                            <div class="bg-white dark:bg-gray-900 dark:text-white relative dark:border-white grid mx-auto overflow-hidden bg-white divide-y rounded shadow sm:divide-y-0 sm:divide-x sm:max-w-screen-sm sm:grid-cols-3 lg:max-w-screen-md">
                                 <div class="inline-block p-8 text-center">
-                                    <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
-                                        <svg class="w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
+                                    <div class="bg-white dark:bg-gray-900 dark:text-white flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
+                                        <svg class=" w-10 h-10 text-deep-purple-accent-400" stroke="currentColor" viewBox="0 0 52 52">
                                             <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
                                         </svg>
                                     </div>
-                                    <p class="font-bold tracking-wide text-gray-800">Create</p>
+                                    <p class="bg-white dark:bg-gray-900 dark:text-white font-bold tracking-wide text-gray-800">Create</p>
                                 </div>
                                 <div class="inline-block p-8 text-center">
                                     <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
@@ -137,7 +172,7 @@
                                             <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
                                         </svg>
                                     </div>
-                                    <p class="font-bold tracking-wide text-gray-800">Deploy</p>
+                                    <p class="bg-white dark:bg-gray-900 dark:text-white font-bold tracking-wide text-gray-800">Deploy</p>
                                 </div>
                                 <div class="inline-block p-8 text-center">
                                     <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 rounded-full bg-indigo-50">
@@ -145,7 +180,7 @@
                                             <polygon stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" points="29 13 14 29 25 29 23 39 38 23 27 23"></polygon>
                                         </svg>
                                     </div>
-                                    <p class="font-bold tracking-wide text-gray-800">Vote</p>
+                                    <p class="bg-white dark:bg-gray-900 dark:text-white font-bold tracking-wide text-gray-800">Vote</p>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +388,6 @@
                         <div class="container px-6 py-10 mx-auto -mt-72 sm:-mt-80 md:-mt-96">
                             <div class="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3">
                                 <div class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
-                                    <img class="object-cover w-full rounded-xl aspect-square" src="   " alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
                                         Sachin Sharma</h1>
@@ -385,7 +419,6 @@
                                 </div>
 
                                 <div class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
-                                    <img class="object-cover w-full rounded-xl aspect-square" src="" alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
                                         Anshul Chaudhary</h1>
@@ -417,7 +450,6 @@
                                 </div>
 
                                 <div class="flex flex-col items-center p-4 border sm:p-6 rounded-xl dark:border-gray-700">
-                                    <img class="object-cover w-full rounded-xl aspect-square" src="" alt="">
 
                                     <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white">
                                         Ankit Raj</h1>
@@ -456,37 +488,32 @@
 
                     <!--Contact starts-->
 
-                    
-                    
-                        <div class="max-w-screen-xl mt-12 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
-                            <div class="flex flex-col justify-between">
-                                <div>
-                                    <h2 class="text-4xl lg:text-5xl font-bold leading-tight">Lets talk about everything!
-                                    </h2>
-                                    <div class="text-gray-700 mt-8">
-                                        Hate forms? Send us an <span class="underline">email</span> instead.
-                                    </div>
-                                </div>
-                                <div class="mt-8 text-center">
 
-                                    <img src="assets/img/contact.png">
 
-                                    </svg>
+                    <div class=" dark:bg-gray-900 dark:border-white dark:text-white max-w-screen-xl mt-12 px-8 grid gap-8 grid-cols-1 md:grid-cols-2 md:px-12 lg:px-16 xl:px-32 py-16 mx-auto bg-gray-100 text-gray-900 rounded-lg shadow-lg">
+                        <div class=" flex flex-col  justify-between">
+                            <div class="mt-20 ">
+                                <h2 class="text-4xl   lg:text-5xl font-bold leading-tight">
+                                    Lets talk about everything!
+                                </h2>
+                                <div class="text-gray-700 mt-8">
+                                    Hate forms? Send us an <span class="underline">email</span> instead.
                                 </div>
                             </div>
-                            <form action="https://formspree.io/f/xrgjongl" method="POST">
+                        </div>
+                        <form action="https://formspree.io/f/xrgjongl" method="POST">
                             <div class="">
                                 <div>
-                                    <span class="uppercase text-sm text-gray-600 font-bold">Full Name</span>
-                                    <input class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="Name" required>
+                                    <span class="dark:border-white dark:text-white uppercase text-sm text-gray-600 font-bold">Full Name</span>
+                                    <input class="dark:border-white dark:text-white w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="text" name="name" placeholder="Name" required>
                                 </div>
                                 <div class="mt-8">
-                                    <span class="uppercase text-sm text-gray-600 font-bold">Email</span>
-                                    <input class="w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="example@email.com" required>
+                                    <span class="dark:border-white dark:text-white uppercase text-sm text-gray-600 font-bold">Email</span>
+                                    <input class="dark:border-white dark:text-white w-full bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline" type="email" name="email" placeholder="example@email.com" required>
                                 </div>
                                 <div class="mt-8">
-                                    <span class="uppercase text-sm text-gray-600 font-bold">Message</span>
-                                    <textarea input type="text" name="message" placeholder="Enter your message here" required class="w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+                                    <span class="dark:border-white dark:text-white uppercase text-sm text-gray-600 font-bold">Message</span>
+                                    <textarea input type="text" name="message" placeholder="Enter your message here" required class="dark:border-white dark:text-white w-full h-32 bg-gray-300 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
 
                                 </div>
                                 <div class="mt-8">
@@ -495,9 +522,9 @@
                                     </button>
                                 </div>
                             </div>
-                            </form>
-                        </div>
-                  
+                        </form>
+                    </div>
+
 
                     <!--Contact ends-->
 

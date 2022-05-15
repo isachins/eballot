@@ -409,6 +409,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <!-- Charts -->
 
                     <div class="grid gap-6 mb-8 md:grid-cols-2 ">
+
+
+
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                                 Result
@@ -430,6 +433,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                                 Time
@@ -447,7 +453,14 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 </div>
                             </div>
                         </div>
+
+
+                        
                     </div>
+
+
+
+
                 </div>
             </main>
         </div>

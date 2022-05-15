@@ -5,10 +5,10 @@ session_start();
 // check if the user is already logged in
 if(isset($_SESSION['email']))
 {
-    header("location: dashboard.php");
+    header("location: ballot.php");
     exit;
 }
-require_once "include/config.php";
+require_once "include/session.php";
 
 $email = $password = "";
 $err = "";
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT email, password FROM users WHERE email = ?";
+    $sql = "SELECT email, password FROM voters WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_email);
     $param_email = $email;
@@ -50,7 +50,7 @@ if(empty($err))
                             $_SESSION["loggedin"] = true;
 
                             //Redirect user to welcome page
-                            header("location: dashboard.php");
+                            header("location: ballot.php");
                             
                         }
                     }

@@ -89,7 +89,7 @@
                                     <a href="login.php" class="w-full px-5 py-3 items-center text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                         Admin
                                     </a>
-                                    <a href="userlogin.php" class="w-full px-5 py-3 text-sm justify-center items-center font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                    <a href="voterslogin.php" class="w-full px-5 py-3 text-sm justify-center items-center font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                         Voter
                                     </a>
                                 </footer>
@@ -150,7 +150,7 @@
                                     <a href="signup.php" class="inline-flex items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none">
                                         Signup
                                     </a>
-                                    <a href="/" aria-label="" class="bg-white dark:bg-gray-900 dark:text-white inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-purple-700">Learn
+                                    <a href="/" aria-label="" class="dark:text-white inline-flex items-center font-semibold text-gray-800 transition-colors duration-200 hover:text-purple-700">Learn
                                         more...</a>
                                 </div>
                             </div>

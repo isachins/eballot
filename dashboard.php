@@ -72,7 +72,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                 </ul>
                 <div class="px-6 my-6 bottom-0 ">
-                    <button @click="openModal" class="flex items-center inset-x-0 bottom-0 justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    <button @click="openModal" class="absolute inset-x-0 bottom-0 flex items-center mb-6 justify-between w-40 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                         Create Election
                         <span class="ml-2" aria-hidden="true">+</span>
                     </button>
@@ -163,7 +163,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                 </ul>
                 <div class="px-6 my-6">
-                    <button @click="openModal" class="flex items-center inset-x-0 bottom-0 justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    <button @click="openModal" class="absolute inset-x-0 bottom-0 w-40 mb-6 flex items-center inset-x-0 bottom-0 justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                         Create Election
                         <span class="ml-2" aria-hidden="true">+</span>
                     </button>

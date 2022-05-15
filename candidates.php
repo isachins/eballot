@@ -64,15 +64,7 @@
                         </a>
                     </li>
 
-                    <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
-                                </path>
-                            </svg>
-                            <span class="ml-4">Positions</span>
-                        </a>
-                    </li>
+
 
 
                     <li class="relative px-6 py-3">
@@ -140,15 +132,7 @@
                         </a>
                     </li>
 
-                    <li class="relative px-6 py-3">
-                        <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                <path d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
-                                </path>
-                            </svg>
-                            <span class="ml-4">Positions</span>
-                        </a>
-                    </li>
+
 
 
                     <li class="relative px-6 py-3">
@@ -309,48 +293,7 @@
                                                     <label for="party" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Party</label>
                                                     <input type="text" name="party" placeholder="John" required class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                 </div>
-                                                <div class='mt-4'>
-                                                    <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Select Position</label>
-                                                    <select id='position' name='position' value='position' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-                                                        <option selected=''> </option>
 
-                                                        <?php
-
-                                                        $servername = "localhost";
-                                                        $username = "root";
-                                                        $password = "";
-                                                        $database = "eballot";
-
-                                                        error_reporting(0);
-
-                                                        //check connection
-                                                        $connection = new mysqli($servername, $username, $password, $database);
-
-                                                        // check connection
-                                                        if ($connection->connect_error) {
-                                                            die("Connection Failed:" . $connection->connect_error);
-                                                        }
-
-                                                        //read all row from database table
-                                                        $sql = "SELECT * FROM position ";
-                                                        $result = $connection->query($sql);
-
-                                                        if (!$result) {
-                                                            die("Invalid query: " . $connection->error);
-                                                        }
-
-                                                        //read data of each row
-                                                        while ($row = $result->fetch_assoc()) {
-                                                            echo " 
-
-                                                        <option name='position' >" . $row["name"] . "</option>
-                                                        ";
-                                                        }
-                                                        ?>
-
-                                                    </select>
-
-                                                </div>
 
                                                 <div class="mb-6">
                                                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
@@ -375,7 +318,7 @@
 
 
                             <div>
-                                <a href="position.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                <a href="voters.php" class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
 
                                     <svg class="w-4 h-4 mr-2 -ml-1" fill="currentColor" aria-hidden="true" viewBox="0 0 20 20">
 
@@ -398,7 +341,7 @@
 
                             <!-- Preview Modal -->
 
-                            
+
                             <div id="submit" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full justify-center items-center" aria-hidden="true">
                                 <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -414,10 +357,10 @@
                                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to submit?</h3>
                                             <a href="dashboard.php" data-modal-toggle="submit" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                 Yes, I'm sure
-                                                    </a>
+                                            </a>
                                             <a href="voters.php" data-modal-toggle="submit" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
                                                 No, Review
-                                                    </a>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -442,7 +385,7 @@
                                     <thead>
                                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                             <th class="px-4 py-3">Name</th>
-                                            <th class="px-4 py-3">Position</th>
+                                            <th class="px-4 py-3">Party</th>
                                             <th class="px-4 py-3">Email</th>
                                             <th class="px-4 py-3">Actions</th>
                                         </tr>
@@ -489,14 +432,12 @@
                                                 <div class='flex items-center text-sm'>
                                                     <div>
                                                         <p class='font-semibold'>" . $row["name"] . "</p>
-                                                        <p class='text-xs text-gray-600 dark:text-gray-400'>
-                                                        " . $row["party"] . "
-                                                        </p>
+                                                      
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class='px-4 py-3 text-sm'>
-                                            " . $row["position"] . "
+                                            " . $row["party"] . "
                                             </td>
                                             <td class='px-4 py-3 text-xs'>
                                                 <span class='px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100'>
@@ -598,63 +539,23 @@
                                                         </button>
                                                     </div>
 
-                                                    <form method='post' action='candidates_add.php'>
+                                                    <form method='post' action='candidates_edit.php'>
                                                         <div class='p-6 space-y-6'>
+                                                            
+                                                       
                                                             <div class='mt-4'>
                                                                 <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Name</label>
-                                                                <input type='text' name='name' placeholder='Name' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                                                                <input type='text' value='' name='name' placeholder='Name' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                                                             </div>
                                                             <div>
                                                                 <label for='party' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Party</label>
-                                                                <input type='text' name='party' placeholder='John' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                                                                <input type='text' value='' name='party' placeholder='John' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                                                             </div>
-                                                            <div class='mt-4'>
-
-                                                                <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Select Position</label>
-                                                                <select id='position' name='position' value='position' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
-                                                                    <option selected='' value="position">Choose Position</option>
-
-                                                                    <?php
-
-                                                                    $servername = "localhost";
-                                                                    $username = "root";
-                                                                    $password = "";
-                                                                    $database = "eballot";
-
-                                                                    error_reporting(0);
-
-                                                                    //check connection
-                                                                    $connection = new mysqli($servername, $username, $password, $database);
-
-                                                                    // check connection
-                                                                    if ($connection->connect_error) {
-                                                                        die("Connection Failed:" . $connection->connect_error);
-                                                                    }
-
-                                                                    //read all row from database table
-                                                                    $sql = "SELECT * FROM position ";
-                                                                    $result = $connection->query($sql);
-
-                                                                    if (!$result) {
-                                                                        die("Invalid query: " . $connection->error);
-                                                                    }
-
-                                                                    //read data of each row
-                                                                    while ($row = $result->fetch_assoc()) {
-                                                                        echo " 
-
-                                                                    <option name='position' >" . $row["name"] . "</option>
-                                                                    ";
-                                                                    }
-                                                                    ?>
-
-                                                                </select>
-
-                                                            </div>
+                                                            
 
                                                             <div class='mb-6'>
                                                                 <label for='email' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Email address</label>
-                                                                <input type='email' id='email' name='email' placeholder='exapmle@email.com' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                                                                <input type='email' id='email'value='' name='email' placeholder='exapmle@email.com' required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
                                                             </div>
 
                                                             <div class='flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600'>
@@ -664,6 +565,7 @@
                                                                     Close
                                                                 </button>
                                                             </div>
+                                                          
                                                         </div>
                                                     </form>
                                                 </div>

@@ -99,13 +99,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             <div class="mt-4 mb-6">
                                 <!-- Modal title -->
                                 <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
-                                    Name
+                                    Create
                                 </p>
                                 <!-- Modal description -->
-                                <div class="mt-4">
-                                    <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Enter your election name</label>
-                                    <input type="text" required name="election_name" id="election_name" placeholder="name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300">
+                                <div class='mt-4'>
+                                    <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Election Name</label>
+                                    <input type="text" name="name"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
                                 </div>
+                                <div class='mt-4'>
+                                    <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Position Name</label>
+                                    <input type="text" name="position"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                </div>
+                                <div class='mt-4'>
+                                    <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
+                                    <textarea placeholder="Your message..." id="description" name="description" rows="4" required class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='Your message...'></textarea>
+                                </div>
+
                             </div>
                             <footer class="flex flex-col items-center justify-end px-6 py-3 -mx-6 -mb-4 space-y-4 sm:space-y-0 sm:space-x-6 sm:flex-row bg-gray-50 dark:bg-gray-800">
                                 <button type="submit" name="submit" value="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -178,14 +187,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             <div class="mt-4 mb-6">
                                 <!-- Modal title -->
                                 <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
-                                    Name
+                                    Create
                                 </p>
                                 <!-- Modal description -->
 
 
-                                <div class="mt-4">
-                                    <label class="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" for="LoggingEmailAddress">Enter your election name</label>
-                                    <input id="LoggingEmailAddress" name="election_name" class="block w-full px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email">
+                                <div class='mt-4'>
+                                    <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Election Name</label>
+                                    <input type="text" name="name"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                </div>
+                                <div class='mt-4'>
+                                    <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Position Name</label>
+                                    <input type="text" name="position"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                </div>
+                                <div class='mt-4'>
+                                    <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
+                                    <textarea placeholder="Your message..." id="description" name="description" rows="4" required class='block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='Your message...'></textarea>
                                 </div>
 
 
@@ -194,7 +211,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <button @click="closeModal" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white text-gray-700 transition-colors duration-150 border border-gray-300 rounded-lg dark:text-gray-400 sm:px-4 sm:py-2 sm:w-auto active:bg-transparent hover:border-gray-500 focus:border-gray-500 active:text-gray-500 focus:outline-none focus:shadow-outline-gray">
                                     Cancel
                                 </button>
-                                <button type="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                <button type="submit" name="submit" class="w-full px-5 py-3 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg sm:w-auto sm:px-4 sm:py-2 active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
                                     Accept
                                 </button>
                             </footer>

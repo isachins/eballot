@@ -3,9 +3,11 @@
 require_once "include/session.php";
 
 	if(isset($_POST['submit'])){
-		$name = $_POST['election_name'];
+		$name = $_POST['name'];
+		$position = $_POST['position'];
+		$description = $_POST['description'];
 
-		$sql = "INSERT INTO election_name (name) VALUES ('$name')";
+		$sql = "INSERT INTO election_name (name, position, description) VALUES ('$name', '$position', '$description')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Candidate added successfully';
 		}

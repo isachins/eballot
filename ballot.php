@@ -231,8 +231,8 @@
                             <div class=" gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3">
 
 
-					
-                                    <!--voting ballot-->
+
+                                <!--voting ballot-->
                                 <form method="POST" id="ballotForm" action="ballot_db.php">
 
 
@@ -305,10 +305,10 @@
                                         }
                                         ?>
                                         <div class="flex justify-center mt-6">
-                                        <button class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                                            submit
-                                        </button>
-                                    </div>
+                                            <button class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                                submit
+                                            </button>
+                                        </div>
 
                                     </div>
 
@@ -316,9 +316,9 @@
 
 
 
-                                    
+
                                 </form>
-                           
+
                             </div>
                         </div>
                     </section>
@@ -330,8 +330,13 @@
 
 
 
-                    <!--Footer starts-->
-                    <footer class="flex flex-col items-center justify-between px-6 py-4 bg-white dark:bg-gray-800 sm:flex-row">
+                    
+
+                </div>
+                
+            </main>
+            <!--Footer starts-->
+            <footer class="flex flex-col items-center justify-between px-6 py-4 bg-white dark:bg-gray-800 sm:flex-row">
                         <a href="#" class="text-xl font-bold text-gray-800 dark:text-white hover:text-gray-700 dark:hover:text-gray-300">eBallot</a>
                         <p class="py-2 text-gray-800 dark:text-white sm:py-0">All rights reserved</p>
                         <div class="flex -mx-2">
@@ -356,9 +361,6 @@
                         </div>
                     </footer>
                     <!--Footer ends-->
-
-                </div>
-            </main>
         </div>
     </div>
 </body>

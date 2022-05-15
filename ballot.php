@@ -233,7 +233,7 @@
 
 
                                 <!--voting ballot-->
-                                <form method="POST" id="ballotForm" action="ballot_db.php">
+                                <form method="POST" action="ballot_db.php">
 
 
 
@@ -305,7 +305,7 @@
                                         }
                                         ?>
                                         <div class="flex justify-center mt-6">
-                                            <button class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                            <button type="button" name="submit" class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                                 submit
                                             </button>
                                         </div>

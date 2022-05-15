@@ -7,7 +7,7 @@ require_once "include/session.php";
 		$position = $_POST['position'];
 		$email = $_POST['email'];
 
-		$sql = "INSERT INTO candidates (position, name, party, email) VALUES ('$position', '$name', '$party', '$email')";
+		$sql = "INSERT INTO candidates (name, party, email) VALUES ('$name', '$party', '$email')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Candidate added successfully';
 		}

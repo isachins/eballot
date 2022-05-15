@@ -104,11 +104,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <!-- Modal description -->
                                 <div class='mt-4'>
                                     <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Election Name</label>
-                                    <input type="text" name="name"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                    <input type="text" name="name" required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
                                 </div>
                                 <div class='mt-4'>
                                     <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Position Name</label>
-                                    <input type="text" name="position"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                    <input type="text" name="position" required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
                                 </div>
                                 <div class='mt-4'>
                                     <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
@@ -194,11 +194,11 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                                 <div class='mt-4'>
                                     <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Election Name</label>
-                                    <input type="text" name="name"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                    <input type="text" name="name" required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
                                 </div>
                                 <div class='mt-4'>
                                     <label for='position' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Position Name</label>
-                                    <input type="text" name="position"  required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
+                                    <input type="text" name="position" required class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' placeholder='example' required>
                                 </div>
                                 <div class='mt-4'>
                                     <label for='message' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>Your message</label>
@@ -295,9 +295,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                     <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                         Dashboard
                     </h2>
-                    
 
-
+            
 
 
 
@@ -313,12 +312,22 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             </div>
                             <div>
                                 <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                                    No. of Positions
+                                    Users
                                     </p>
                                 </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    6389
+
+                                    <?php
+                                    require_once "include/config.php";
+                                    $sql = "SELECT * FROM users";
+                                    $query = $conn->query($sql);
+
+                                    echo "  $query->num_rows  ";
+                                    ?>
                                 </p>
+                              
+
+                               
                             </div>
                         </div>
                         <!-- Card -->
@@ -334,8 +343,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                     </p>
                                 </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    $ 46,760.89
+
+                                    <?php
+                                    require_once "include/config.php";
+                                    $sql = "SELECT * FROM candidates";
+                                    $query = $conn->query($sql);
+
+                                    echo "  $query->num_rows  ";
+                                    ?>
                                 </p>
+
                             </div>
                         </div>
                         <!-- Card -->
@@ -352,7 +369,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                     </p>
                                 </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    376
+                                    <?php
+                                    require_once "include/config.php";
+                                    $sql = "SELECT * FROM voters";
+                                    $query = $conn->query($sql);
+
+                                    echo "  $query->num_rows  ";
+                                    ?>
                                 </p>
 
                             </div>
@@ -370,7 +393,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                     </p>
                                 </button>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                                    35
+                                    <?php
+                                    require_once "include/config.php";
+                                    $sql = "SELECT * FROM result";
+                                    $query = $conn->query($sql);
+
+                                    echo "  $query->num_rows  ";
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -378,7 +407,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 
                     <!-- Charts -->
-                   
+
                     <div class="grid gap-6 mb-8 md:grid-cols-2 ">
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">

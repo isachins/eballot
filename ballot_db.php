@@ -8,7 +8,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: user.php");
 }
 	if(isset($_POST['submit'])){
-		$name = $_POST['name'];
 		$party = $_POST['email'];
 		$position = $_POST['party'];
 		$email = $_POST['vote'];

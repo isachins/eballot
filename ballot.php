@@ -274,7 +274,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                                     <section class='radio-section mt-2'>
                                                     <div class='radio-list mb-auto'>
                                                             <div class='radio-item'>
-                                                                <input type='radio' name='radio' id='" . $row["id"] . "'>
+                                                                <input type='radio' name='vote' id='" . $row["id"] . "'>
                                                                 <label for='" . $row["id"] . "'>" . $row["name"] . " / " . $row["party"] . "</label>
                                                             </div>
                                                         </div>

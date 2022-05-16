@@ -23,5 +23,20 @@
         "sqlquery",
         "votersdelete"
     ],
-    "livePreview.defaultPreviewPath": "/index.html"
+    "livePreview.defaultPreviewPath": "/index.html",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "database": "eballot",
+            "username": "root",
+            "name": "eballot",
+            "password": ""
+        }
+    ]
 }

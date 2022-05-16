@@ -1,4 +1,13 @@
-<?php require_once "include/session.php"; ?>
+<?php
+require_once "include/config.php";
+
+session_start();
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("location: user.php");
+}
+
+?>
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 

@@ -1,8 +1,9 @@
 <?php
 
 
-session_start();
+
 require_once "include/session.php";
+
 
 
 error_reporting(0);

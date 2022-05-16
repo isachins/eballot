@@ -1,4 +1,8 @@
 <?php
+
+require_once "include/session.php";
+
+
 $hostName = "localhost";
 $userName = "root";
 $password = "";

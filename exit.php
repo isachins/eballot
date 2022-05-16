@@ -1,5 +1,9 @@
 <?php
+
 require_once "include/session.php";
+
+
+
 
 $sql = "TRUNCATE TABLE candidates";
 	if ($conn->query($sql)) {

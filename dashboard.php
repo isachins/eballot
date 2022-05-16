@@ -1,10 +1,6 @@
 <?php
+require_once "include/session.php";
 
-session_start();
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: login.php");
-}
 
 ?>
 

@@ -7,16 +7,13 @@ session_start();
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("location: user.php");
 }
-
-
-
 	if(isset($_POST['submit'])){
 		$name = $_POST['name'];
 		$party = $_POST['email'];
 		$position = $_POST['party'];
 		$email = $_POST['vote'];
 
-        $sql = "INSERT INTO result (name, email, party, vote) VALUES ('$name', '$email', '$party', '$vote')";
+        $sql = "INSERT INTO result (email, party, vote) VALUES ('$email', '$party', '$vote')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Voted successfully';
 		}

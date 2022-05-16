@@ -1,10 +1,5 @@
 <?php
-
-require_once "include/session.php";
-
-
-
-
+	require_once "include/session.php";
 	if(isset($_POST['submit'])){
 		$name = $_POST['name'];
 		$party = $_POST['party'];
@@ -18,11 +13,9 @@ require_once "include/session.php";
 		else{
 			$_SESSION['error'] = $conn->error;
 		}
-
 	}
 	else{
 		$_SESSION['error'] = 'Fill up add form first';
 	}
-
 	header('location: candidates.php');
 ?>

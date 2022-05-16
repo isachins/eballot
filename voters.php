@@ -266,8 +266,6 @@ require_once "include/session.php";
                             $connect = mysqli_connect("localhost", "root", "", "eballot"); //database connectivity
                             if (isset($_POST["submit"])) {
 
-                                $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                                $password = substr(str_shuffle($set), 0, 15); 
                                 if ($_FILES['file']['name']) {
                                     $filename = explode(".", $_FILES['file']['name']);
                                     if ($filename[1] == 'csv') {
@@ -277,7 +275,7 @@ require_once "include/session.php";
                                             $item1 = mysqli_real_escape_string($connect, $data[0]);
                                             $item2 = mysqli_real_escape_string($connect, $data[1]);
                                             //insert data from CSV file 
-                                            $query = "INSERT into voters(name, email , password) values('$item1','$item2','$password')";
+                                            $query = "INSERT into voters(name, email) values('$item1','$item2')";
                                             mysqli_query($connect, $query);
                                         }
                                         fclose($handle);

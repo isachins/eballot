@@ -1,9 +1,6 @@
 <?php
-require_once "include/session.php";
-
-
+    require_once "include/session.php";
 ?>
-
 <!--START PHP CONNECTION FOR PIE CHART-->
 <?php
 try {
@@ -11,7 +8,6 @@ try {
 } catch (PDOException $e) {
     echo $e->getMessage();
 }
-
 $sql = "SELECT count(vote) as tcount, vote from result group by vote";
 $stmt = $con->prepare($sql);
 $stmt->execute();
@@ -59,7 +55,7 @@ $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
             var options = {
                 title: '',
                 is3D: true,
-          
+
             };
 
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
@@ -352,10 +348,10 @@ $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </svg>
                             </div>
                             <div>
-                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <a p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Users
                                     </p>
-                                </button>
+                                </a>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
 
                                     <?php
@@ -379,10 +375,10 @@ $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </svg>
                             </div>
                             <div>
-                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <a p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     No. of Candidates
                                     </p>
-                                </button>
+                                </a>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
 
                                     <?php
@@ -405,10 +401,10 @@ $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </svg>
                             </div>
                             <div>
-                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <a p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Total Voters
                                     </p>
-                                </button>
+                                </a>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     <?php
                                     require_once "include/config.php";
@@ -429,10 +425,10 @@ $arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 </svg>
                             </div>
                             <div>
-                                <button p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <a p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                     Voters Voted
                                     </p>
-                                </button>
+                                </a>
                                 <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     <?php
                                     require_once "include/config.php";

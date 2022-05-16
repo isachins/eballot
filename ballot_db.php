@@ -4,15 +4,14 @@ require_once "include/config.php";
 
 session_start();
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: user.php");
-}
-	if(isset($_POST['submit'])){
-		$party = $_POST['email'];
-		$position = $_POST['party'];
-		$email = $_POST['vote'];
+	
+	if(isset($_POST['submit']))
+	{
+		$email = $_POST['email'];
+		$vote = $_POST['vote'];
+		$party = $_POST['party'];
 
-        $sql = "INSERT INTO result (email, party, vote) VALUES ('$email', '$party', '$vote')";
+        $sql = "INSERT INTO result (email, vote, party) VALUES (" . $_SESSION['email'] . ", '$vote', '$party')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Voted successfully';
 		}
@@ -23,5 +22,5 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 	else{
 		$_SESSION['error'] = 'Select one option first';
 	}
-	header('location: submitted.php');
+	header('location: submitted.php');	
 ?>

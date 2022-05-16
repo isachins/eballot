@@ -1,9 +1,7 @@
 <?php
 require_once "include/config.php";
 session_start();
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("location: user.php");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -152,7 +150,16 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             <template x-if="isProfileMenuOpen">
                                 <ul x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.away="closeProfileMenu" @keydown.escape="closeProfileMenu" class="absolute right-0 w-56 p-2 mt-2 space-y-2 text-gray-600 bg-white border border-gray-100 rounded-md shadow-md dark:border-gray-700 dark:text-gray-300 dark:bg-gray-700" aria-label="submenu">
                                     <li class="flex">
-                                        <a class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="logout.php">
+                                        <a   class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="logout.php">
+                                            <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
+                                                </path>
+                                            </svg>
+                                            <span><?php echo $_SESSION['email'] ?></span>
+                                        </a>
+                                    </li>
+                                    <li class="flex">
+                                        <a href="logout.php" class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200" href="logout.php">
                                             <svg class="w-4 h-4 mr-3" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1">
                                                 </path>
@@ -246,18 +253,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                                         <?php
 
-                                            $servername = "localhost";
-                                            $username = "root";
-                                            $password = "";
-                                            $database = "eballot";
-
-                                            //check connection
-                                            $connection = new mysqli($servername, $username, $password, $database);
-
-                                            // check connection
-                                            if ($connection->connect_error) {
-                                                die("Connection Failed:" . $connection->connect_error);
-                                            }
+                                            require_once 'include/config.php';
 
                                             //read all row from database table
                                             $sql = "SELECT * FROM candidates";
@@ -272,10 +268,10 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                                 echo
                                                 "  
                                                     <section class='radio-section mt-2'>
-                                                    <div class='radio-list mb-auto'>
+                                                        <div class='radio-list mb-auto'>
                                                             <div class='radio-item'>
-                                                                <input type='radio' name='vote' id='" . $row["id"] . "'>
-                                                                <label for='" . $row["id"] . "'>" . $row["name"] . " / " . $row["party"] . "</label>
+                                                                <input type='radio' name='vote' value='".$row["name"]."' id='" . $row["id"] . "'>
+                                                                <label for='" . $row["id"] . "'>" . $row["name"] . "</label>
                                                             </div>
                                                         </div>
                                                     </section>
@@ -284,7 +280,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                         ?>
 
                                         <div class="flex justify-center mt-6">
-                                            <button type="button" name="submit" class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                            <button type="submit" name="submit" class="inline-flex items-center justify-center mt-8 mb-4 w-32 px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                                                 submit
                                             </button>
                                         </div>

@@ -53,6 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // If there were no errors, go ahead and insert into the database
     if (empty($email_err) && empty($password_err) && empty($confirm_password_err)) {
         $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
+        $sql = "INSERT INTO usercopy (email, password) VALUES (?, ?)";
+
         $stmt = mysqli_prepare($conn, $sql);
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_password);

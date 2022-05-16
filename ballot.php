@@ -230,7 +230,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                                     <h1 class='mt-4 text-2xl font-semibold text-gray-700 capitalize dark:text-white'>
                                                         " . $row["name"] . "
                                                     </h1>
-                                                        <p class='block max-w-2xl mt-4 text-xl text-gray-500 dark:text-gray-300'> " . $row["description"] . " </p>
+                                                    <p class='block max-w-2xl mt-4 text-xl text-gray-500 dark:text-gray-300'> 
+                                                        " . $row["description"] . " 
+                                                    </p>
                                                 ";
                                         }
                                         ?>
@@ -244,41 +246,41 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                                         <?php
 
-                                        $servername = "localhost";
-                                        $username = "root";
-                                        $password = "";
-                                        $database = "eballot";
+                                            $servername = "localhost";
+                                            $username = "root";
+                                            $password = "";
+                                            $database = "eballot";
 
-                                        //check connection
-                                        $connection = new mysqli($servername, $username, $password, $database);
+                                            //check connection
+                                            $connection = new mysqli($servername, $username, $password, $database);
 
-                                        // check connection
-                                        if ($connection->connect_error) {
-                                            die("Connection Failed:" . $connection->connect_error);
-                                        }
+                                            // check connection
+                                            if ($connection->connect_error) {
+                                                die("Connection Failed:" . $connection->connect_error);
+                                            }
 
-                                        //read all row from database table
-                                        $sql = "SELECT * FROM candidates";
-                                        $result = $connection->query($sql);
+                                            //read all row from database table
+                                            $sql = "SELECT * FROM candidates";
+                                            $result = $connection->query($sql);
 
-                                        if (!$result) {
-                                            die("Invalid query: " . $connection->error);
-                                        }
+                                            if (!$result) {
+                                                die("Invalid query: " . $connection->error);
+                                            }
 
-                                        //read data of each row
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo
-                                            "  
+                                            //read data of each row
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo
+                                                "  
                                                     <section class='radio-section mt-2'>
-                                                        <div class='radio-list mb-auto'>
+                                                    <div class='radio-list mb-auto'>
                                                             <div class='radio-item'>
-                                                                <input type='radio' name='radio' id='" . $row["name"] . "'>
-                                                                <label for='" . $row["name"] . "'>" . $row["name"] . " / " . $row["party"] . "</label>
+                                                                <input type='radio' name='radio' id='" . $row["id"] . "'>
+                                                                <label for='" . $row["id"] . "'>" . $row["name"] . " / " . $row["party"] . "</label>
                                                             </div>
                                                         </div>
                                                     </section>
                                                 ";
-                                        }
+                                            }
                                         ?>
 
                                         <div class="flex justify-center mt-6">

@@ -20,11 +20,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 		else{
 			$_SESSION['error'] = $conn->error;
 		}
-
 	}
 	else{
 		$_SESSION['error'] = 'Select one option first';
 	}
-
 	header('location: submitted.php');
 ?>

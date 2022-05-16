@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 if(empty($err))
 {
-    $sql = "SELECT email, password FROM users WHERE email = ?";
+    $sql = "SELECT email, password FROM voters WHERE email = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "s", $param_email);
     $param_email = $email;

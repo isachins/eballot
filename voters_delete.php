@@ -8,8 +8,8 @@ require_once "include/session.php";
 error_reporting(0);
 
 
-$ts_email=$_GET['email'];
-$query = "DELETE FROM VOTERS WHERE TS_EMAIL = '$ts_email'";
+$email=$_GET['email'];
+$query = "DELETE FROM VOTERS WHERE email = '$email'";
 
 $data=mysqli_query($conn, $query);
 

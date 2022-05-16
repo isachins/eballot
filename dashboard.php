@@ -8,6 +8,21 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
 ?>
 
+<!--START PHP CONNECTION FOR PIE CHART-->
+<?php
+try {
+    $con = new PDO("mysql:host=localhost; dbname=eballot", "root", "");
+} catch (PDOException $e) {
+    echo $e->getMessage();
+}
+
+$sql = "SELECT count(vote) as tcount, vote from result group by vote";
+$stmt = $con->prepare($sql);
+$stmt->execute();
+$arr = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+<!--eND PHP CONNECTION FOR PIE CHART-->
 
 <!DOCTYPE html>
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
@@ -28,6 +43,35 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <script src="./assets/js/focus-trap.js" defer></script>
     <script src="https://unpkg.com/flowbite@1.4.5/dist/flowbite.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.5/dist/flowbite.min.css" />
+
+
+    <!--pie chart script start-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Candidate', 'Count'],
+                <?php foreach ($arr as $key => $val) { ?>['<?php echo $val['vote'] ?>', <?php echo $val['tcount'] ?>],
+                <?php } ?>
+            ]);
+
+            var options = {
+                title: '',
+                is3D: true,
+          
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
+    <!--pie chart script end-->
+
 
 </head>
 
@@ -101,6 +145,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                 <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-300">
                                     Create
                                 </p>
+                                <h6> Remember once create new election old data will be deleted </h6>
                                 <!-- Modal description -->
                                 <div class='mt-4'>
                                     <label for='name' class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300'>Election Name</label>
@@ -296,7 +341,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                         Dashboard
                     </h2>
 
-            
+
 
 
 
@@ -325,9 +370,9 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                     echo "  $query->num_rows  ";
                                     ?>
                                 </p>
-                              
 
-                               
+
+
                             </div>
                         </div>
                         <!-- Card -->
@@ -408,44 +453,15 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
                     <!-- Charts -->
 
-                    <div class="grid gap-6 mb-8 md:grid-cols-2 ">
+                    <div class="grid gap-6 mb-8 md:grid-cols-1 ">
                         <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
                             <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
                                 Result
                             </h4>
-                            <canvas id="pie"></canvas>
-                            <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                                <!-- Chart legend -->
-                                <div class="flex items-center">
-                                    <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
-                                    <span>Shirts</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"></span>
-                                    <span>Shoes</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
-                                    <span>Bags</span>
-                                </div>
+                            <div id="chart_wrap ">
+                                <div id="piechart_3d" style="width: 900px; height: 500px; " class=" dark:bg-gray-800"></div>
                             </div>
-                        </div>
-                        <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
-                            <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
-                                Time
-                            </h4>
-                            <canvas id="line"></canvas>
-                            <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
-                                <!-- Chart legend -->
-                                <div class="flex items-center">
-                                    <span class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"></span>
-                                    <span>Organic</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
-                                    <span>Paid</span>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>

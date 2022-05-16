@@ -269,6 +269,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                             $connect = mysqli_connect("localhost", "root", "", "eballot"); //database connectivity
                             if (isset($_POST["submit"])) {
 
+                                $set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                                $password = substr(str_shuffle($set), 0, 15); 
                                 if ($_FILES['file']['name']) {
                                     $filename = explode(".", $_FILES['file']['name']);
                                     if ($filename[1] == 'csv') {
@@ -278,7 +280,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                             $item1 = mysqli_real_escape_string($connect, $data[0]);
                                             $item2 = mysqli_real_escape_string($connect, $data[1]);
                                             //insert data from CSV file 
-                                            $query = "INSERT into voters(ts_name, ts_email) values('$item1','$item2')";
+                                            $query = "INSERT into voters(name, email , password) values('$item1','$item2','$password')";
                                             mysqli_query($connect, $query);
                                         }
                                         fclose($handle);
@@ -335,6 +337,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                         <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
                                             <th class="px-4 py-3">Name</th>
                                             <th class="px-4 py-3">Email</th>
+                                            <th class="px-4 py-3">Password</th>
                                             <th class="px-4 py-3">Actions</th>
                                         </tr>
                                     </thead>
@@ -369,13 +372,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                                     <td class='px-4 py-3'>
                                                         <div class='flex items-center text-sm'>
                                                             <div >
-                                                                <p class='font-semibold'>  " . $row["ts_name"] . " </p>
+                                                                <p class='font-semibold'>  " . $row["name"] . " </p>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td class='px-4 py-3 text-sm'>
-                                                        " . $row["ts_email"] . "
+                                                        " . $row["email"] . "
                                                     </td>
+
+                                                    <td class='px-4 py-3 text-sm'>
+                                                    " . $row["password"] . "
+                                                </td>
 
 
 
@@ -418,7 +425,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
                                                                     </svg>
                                                                     <h3 class='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>Are you sure you want to delete
                                                                         this entry?</h3>
-                                                                    <a  href='voters_delete.php?email=$row[ts_email]' data-modal-toggle='votersdelete' type='button'
+                                                                    <a  href='voters_delete.php?email=$row[email]' data-modal-toggle='votersdelete' type='button'
                                                                         class='text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2'>
                                                                         Yes, I'm sure
                                                                     </a>
